@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D _rigid;
     [SerializeField] private float jumpforce = 5.0f;
-    [SerializeField] private bool grounded = false;
+    [SerializeField] private bool grounded;
     [SerializeField] private LayerMask _groundLayer;
 
 
@@ -23,20 +23,18 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         {
-            
-            
             _rigid.velocity = new Vector2(_rigid.velocity.x, jumpforce);
             grounded = false;
         }
 
-        RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.down, 0.8f, _groundLayer);
-        Debug.DrawRay(transform.position, Vector2.down, Color.red);
+        //RaycastHit2D hitinfo = Physics2D.Raycast(transform.position, Vector2.down, 0.8f, _groundLayer);
+        //Debug.DrawRay(transform.position, Vector2.down, Color.red);
 
-        if (hitinfo.collider != null)
-        {
-            grounded = true;
+        //if (hitinfo.collider != null)
+        //{
+        //    grounded = true;
             
-        }
+        //}
 
         //Horizontal Input for left+right
 
@@ -44,11 +42,17 @@ public class PlayerScript : MonoBehaviour
         _rigid.velocity = new Vector2(move, _rigid.velocity.y);
     }
 
-    void JumpFunction()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
+    }
+    
         
         
        
    
-    }
+    
 }
