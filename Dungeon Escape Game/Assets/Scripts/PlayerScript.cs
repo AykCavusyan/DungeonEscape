@@ -10,21 +10,25 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     private bool resetJumpNeeded = false;
     [SerializeField] private float speed;
-
+    private PlayerAnimationScript _playeranim;
+    private SpriteRenderer _spriteRenderer;
+    private bool _grounded = false;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigid = GetComponent<Rigidbody2D>();
         speed = 2.5f;
-
+        _playeranim = GetComponent<PlayerAnimationScript>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-
+        grounded = IsGrounded();
     }
 
     //IEnumerator ResetJumpNeededRoutine()
@@ -37,15 +41,30 @@ public class PlayerScript : MonoBehaviour
     {
         //horizontal movement
         float move = Input.GetAxisRaw("Horizontal");
-        _rigid.velocity = new Vector2(move*speed, _rigid.velocity.y);
+
+        if (move > 0)
+        {
+            Flip(true);
+        }
+        else if (move < 0)
+        {
+            Flip(false);
+        }
+
+
 
         //jumping 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded() == true)
         {
             Debug.Log("Jump");
             _rigid.velocity = new Vector2(_rigid.velocity.x, jumpforce);
+            
             StartCoroutine(ResetJumpRoutine());
+            _playeranim.JumpAnimation(true);
         }
+
+        _rigid.velocity = new Vector2(move * speed, _rigid.velocity.y);
+        _playeranim.MoveAnimation(move);
 
         //if (Input.GetKeyDown(KeyCode.Space) && grounded == true)
         //{
@@ -62,6 +81,7 @@ public class PlayerScript : MonoBehaviour
         if (hitinfo.collider != null)
         {
             if (resetJumpNeeded == false)
+                _playeranim.JumpAnimation(false);
             return true;
         }
         return false;
@@ -70,9 +90,24 @@ public class PlayerScript : MonoBehaviour
     IEnumerator ResetJumpRoutine()
     {
         resetJumpNeeded = true;
+        
         yield return new WaitForSeconds(0.1f);
+        
         resetJumpNeeded = false;
+       
 
+    }
+
+    void Flip(bool faceRight)
+    {
+        if (faceRight == true)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (faceRight == false)
+        {
+            _spriteRenderer.flipX = true;
+        }
     }
 
 
