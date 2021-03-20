@@ -12,7 +12,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float speed;
     private PlayerAnimationScript _playeranim;
     private SpriteRenderer _spriteRenderer;
-    private bool _grounded = false;
+    private SpriteRenderer _swordArc;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,10 @@ public class PlayerScript : MonoBehaviour
         speed = 2.5f;
         _playeranim = GetComponent<PlayerAnimationScript>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        
+        _swordArc = transform.GetChild(1).GetComponentInChildren<SpriteRenderer>();
+
+        _swordArc.transform.localEulerAngles = new Vector3(78, 48, -80);
+
     }
 
     // Update is called once per frame
@@ -49,6 +53,11 @@ public class PlayerScript : MonoBehaviour
         else if (move < 0)
         {
             Flip(false);
+        }
+
+        if (Input.GetMouseButtonDown(0) && IsGrounded() == true)
+        {
+            _playeranim.Attack();
         }
 
 
@@ -103,10 +112,27 @@ public class PlayerScript : MonoBehaviour
         if (faceRight == true)
         {
             _spriteRenderer.flipX = false;
+            _swordArc.flipX = false;
+            _swordArc.flipY = false;
+
+            Vector3 newPos = _swordArc.transform.localPosition;
+            newPos.x = 1.01f;
+            _swordArc.transform.localPosition = newPos;
+
+            //_swordArc.transform.localEulerAngles = new Vector3(78, 48, -80);
+
         }
         else if (faceRight == false)
         {
             _spriteRenderer.flipX = true;
+            _swordArc.flipX = true;
+            _swordArc.flipY = true;
+
+            Vector3 newPos = _swordArc.transform.localPosition;
+            newPos.x = -1.01f;
+            _swordArc.transform.localPosition = newPos;
+
+            //_swordArc.transform.localEulerAngles = new Vector3(-78, -48, 80);
         }
     }
 

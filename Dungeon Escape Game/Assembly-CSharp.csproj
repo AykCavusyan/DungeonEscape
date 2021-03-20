@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimationScript.cs" />
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Reference Include="UnityEngine">
@@ -631,6 +632,10 @@
       <Project>{73FC1794-A337-18F9-CF55-B12E2502D234}</Project>
       <Name>Unity.2D.Path.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.DeviceSimulator.Tests.Common.csproj">
+      <Project>{250A1418-3722-A5AF-116F-EC798E8E84D3}</Project>
+      <Name>Unity.DeviceSimulator.Tests.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{5531BC2F-A525-CA04-EB57-9A362B7D03F1}</Project>
       <Name>UnityEngine.UI</Name>
@@ -654,6 +659,10 @@
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{81ADAAEB-3503-DDD8-2006-FA534635806C}</Project>
       <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.DeviceSimulator.Editor.csproj">
+      <Project>{3B3A3E3B-BCFC-EBCB-60BD-19B94D4D8594}</Project>
+      <Name>Unity.DeviceSimulator.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{F7687891-D967-B522-DA7D-A7EB74AE1AAF}</Project>
@@ -714,6 +723,14 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{E7976F86-8983-8E84-11E3-6EDA2D8CD5BE}</Project>
       <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{4F6AB0D1-86FC-7748-7A30-E3F7E464D96E}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{A41FD5A8-47E3-CFFC-49D7-4CF721D61B2D}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
