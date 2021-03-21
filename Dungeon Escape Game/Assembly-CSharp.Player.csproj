@@ -53,6 +53,9 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Cinemachine">
+      <HintPath>Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
       <HintPath>Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
@@ -85,9 +88,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>C:/Users/Sebastian/OneDrive/Desktop/Unity/2019.4.19f1/Editor/Data/PlaybackEngines/iOSSupport/Variations/il2cpp/Managed/UnityEngine.dll</HintPath>
@@ -311,6 +311,9 @@
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
@@ -322,9 +325,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Users\Sebastian\OneDrive\Desktop\Unity\2019.4.19f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
@@ -674,8 +674,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraScript.cs" />
-    <Compile Include="Assets\Scripts\PlayerAnimationScript.cs" />
-    <Compile Include="Assets\Scripts\PlayerScript.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\MossGiantScript.cs" />
+    <Compile Include="Assets\Scripts\Enemy\SpiderEnemy.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
