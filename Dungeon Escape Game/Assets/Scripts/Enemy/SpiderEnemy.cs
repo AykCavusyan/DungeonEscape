@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class SpiderEnemy : Enemy
 {
-    private void Start()
+    public override void FetchComponents()
     {
-        Attack();
+        base.FetchComponents();
     }
 
-    public override void Attack()
-    {
-        base.Attack();
-        Debug.Log("Spider Attack");
-    }
-
-    public override void Update()
-    {
-        Debug.Log("Spider Updating");
-    }
 }
