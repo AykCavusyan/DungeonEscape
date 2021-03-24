@@ -62,7 +62,6 @@ public abstract class Enemy : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
-    }
-
+    }   
     
 }

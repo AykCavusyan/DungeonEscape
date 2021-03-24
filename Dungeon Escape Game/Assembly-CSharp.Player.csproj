@@ -676,8 +676,11 @@
     <Compile Include="Assets\Scripts\CameraScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\MossGiantScript.cs" />
+    <Compile Include="Assets\Scripts\Enemy\SkeletonEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\SpiderEnemy.cs" />
+    <Compile Include="Assets\Scripts\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimationScript.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAttackScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
