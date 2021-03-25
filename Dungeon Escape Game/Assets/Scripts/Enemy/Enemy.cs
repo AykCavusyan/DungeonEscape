@@ -14,6 +14,13 @@ public abstract class Enemy : MonoBehaviour
     
     protected Vector3 _currentTarget;
 
+    protected bool _isHit = false;
+
+    
+    private GameObject _player;
+    private Vector3 _playerPos;
+
+
 
     public virtual void FetchComponents()
     {
@@ -25,11 +32,29 @@ public abstract class Enemy : MonoBehaviour
     {
         FetchComponents();
         _currentTarget = pointB.position;
+        _player = GameObject.Find("Player");
     }
 
     public virtual void Update()
     {
+        _playerPos = new Vector3(_player.transform.position.x, _player.transform.position.y, _player.transform.position.z);
+        DetectPlayer();
+
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            return;
+        }
+
+        else if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Hit"))
+        {
+            return;
+        }
+        else if (_anim.GetBool("InCombat") == true)
+        {
+            CombatMode();
+        }
+
+        else if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
         {
             return;
         }
@@ -52,7 +77,6 @@ public abstract class Enemy : MonoBehaviour
         {
             _anim.SetTrigger("Idle");
             _currentTarget = pointB.position;
-
         }
 
         else if (transform.position == pointB.position)
@@ -61,7 +85,33 @@ public abstract class Enemy : MonoBehaviour
             _currentTarget = pointA.position;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
+       
+            transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
+        
+        
     }   
+
+    public virtual void DetectPlayer()
+    {
+        if (Mathf.Abs((transform.position.x) - (_playerPos.x)) < 2f)
+        {
+            
+           _anim.SetBool("InCombat", true);
+        }
+        else
+        {
+            _anim.SetBool("InCombat", false);
+        }
+          
+    }
     
+    public virtual void CombatMode()
+    {
+        
+      transform.position = Vector3.MoveTowards(transform.position, _playerPos, _speed * Time.deltaTime);
+        
+    }
+
+
+
 }

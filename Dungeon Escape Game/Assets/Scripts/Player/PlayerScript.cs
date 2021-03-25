@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private PlayerAnimationScript _playeranim;
     private SpriteRenderer _spriteRenderer;
     private SpriteRenderer _swordArc;
+    private PlayerAttackScript _playerAttack;
 
     
 
@@ -60,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         {
             _swordArc.transform.localEulerAngles = new Vector3(Random.Range(65,79),Random.Range(-55,55),Random.Range(-40,-85));
             _playeranim.Attack();
+            
         }
 
 

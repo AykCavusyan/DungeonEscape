@@ -2,14 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackScript : MonoBehaviour
+public  class PlayerAttackScript : MonoBehaviour
 {
+   [SerializeField ]private bool _canHit = true;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit:" + other.name);
-         if (other.tag == "Enemy")
-        {
+   
+        IDamageable hit = other.GetComponent<IDamageable>();
 
+        if (hit != null && _canHit == true)
+        {
+                hit.Damage();
+                StartCoroutine(CanHitCheck());
         }
+
+        IEnumerator CanHitCheck()
+        {
+            _canHit = false;
+            yield return new WaitForSeconds(0.5f);
+            _canHit = true;
+        }
+
     }
+
+     
+
 }

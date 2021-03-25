@@ -14,7 +14,18 @@ public class SkeletonEnemy : Enemy, IDamageable
 
     public void Damage()
     {
+        Health--;
+        Debug.Log(Health);
+        _anim.SetTrigger("Hit");
+        _isHit = true;
+        _anim.SetBool("InCombat", true);
 
+
+        if (Health < 1)
+        {
+            _anim.SetTrigger("Death");
+            GetComponent<Collider2D>().enabled = false;
+        }
     }
 
 
