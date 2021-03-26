@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDamageable
 {
+    public int Health { get; set; }
+
     private Rigidbody2D _rigid;
     [SerializeField] private float jumpforce = 5.0f;
     [SerializeField] private bool grounded;
@@ -138,8 +141,13 @@ public class PlayerScript : MonoBehaviour
 
             //_swordArc.transform.localEulerAngles = new Vector3(-78, -48, 80);
         }
-    }
 
+        
+    }
+     public void Damage()
+    {
+        Debug.Log("Damaged");
+    }
 
 
     //void CheckGrounded()

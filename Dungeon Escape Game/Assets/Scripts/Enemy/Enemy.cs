@@ -87,7 +87,7 @@ public abstract class Enemy : MonoBehaviour
 
        
             transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
-        
+            
         
     }   
 
@@ -107,8 +107,19 @@ public abstract class Enemy : MonoBehaviour
     
     public virtual void CombatMode()
     {
+        Vector3 direction = _player.transform.position - transform.position;
+
+        if (direction.x > 0 && _anim.GetBool("InCombat") == true)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else if (direction.x < 0 && _anim.GetBool("InCombat") == true)
+        {
+            _spriteRenderer.flipX = true;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(_playerPos.x -0.5f, transform.position.y, transform.position.z) , _speed * Time.deltaTime);
         
-      transform.position = Vector3.MoveTowards(transform.position, _playerPos, _speed * Time.deltaTime);
         
     }
 
