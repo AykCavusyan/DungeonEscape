@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int _health;
@@ -9,12 +10,16 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected int _gems;
     [SerializeField] protected Transform pointA, pointB;
 
+    public GameObject _loot;
+    
+
     protected Animator _anim;
     protected SpriteRenderer _spriteRenderer;
     
     protected Vector3 _currentTarget;
 
     protected bool _isHit = false;
+    protected bool _isDead = false;
 
     
     private GameObject _player;
@@ -33,12 +38,19 @@ public abstract class Enemy : MonoBehaviour
         FetchComponents();
         _currentTarget = pointB.position;
         _player = GameObject.Find("Player");
+        
     }
+
 
     public virtual void Update()
     {
         _playerPos = new Vector3(_player.transform.position.x, _player.transform.position.y, _player.transform.position.z);
         DetectPlayer();
+
+        if (_isDead == true)
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
 
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
@@ -49,12 +61,12 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
-        else if (_anim.GetBool("InCombat") == true)
+        else if (_anim.GetBool("InCombat") == true && _isDead == false)
         {
             CombatMode();
         }
 
-        else if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        else if (_anim.GetCurrentAnimatorStateInfo(0).IsName("Death") || _isDead == true)
         {
             return;
         }
@@ -87,9 +99,8 @@ public abstract class Enemy : MonoBehaviour
 
        
             transform.position = Vector3.MoveTowards(transform.position, _currentTarget, _speed * Time.deltaTime);
-            
-        
-    }   
+    } 
+    
 
     public virtual void DetectPlayer()
     {
@@ -101,9 +112,9 @@ public abstract class Enemy : MonoBehaviour
         else
         {
             _anim.SetBool("InCombat", false);
-        }
-          
+        }  
     }
+
     
     public virtual void CombatMode()
     {
@@ -119,10 +130,8 @@ public abstract class Enemy : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(_playerPos.x -0.5f, transform.position.y, transform.position.z) , _speed * Time.deltaTime);
-        
-        
+
     }
 
-
-
+    
 }

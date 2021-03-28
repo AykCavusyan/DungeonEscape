@@ -4,6 +4,7 @@ using UnityEngine;
 
 public  class MossGiantScript : Enemy, IDamageable
 {
+    
     public int Health { get; set; }
 
     public override void FetchComponents()
@@ -22,14 +23,17 @@ public  class MossGiantScript : Enemy, IDamageable
 
 
         if (Health < 1)
-        {
+
             _anim.SetTrigger("Death");
-            GetComponent<Collider2D>().enabled = false;
-        }
+        _isDead = true;
+        GameObject _Loot = Instantiate(_loot, transform.position, Quaternion.identity);
+        _Loot.GetComponent<DiamondScript>()._gems = _gems;
+        
     }
-
-
-
 }
+
+
+
+
 
 

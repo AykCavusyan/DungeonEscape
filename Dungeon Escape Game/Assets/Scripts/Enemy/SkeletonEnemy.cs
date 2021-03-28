@@ -24,7 +24,10 @@ public class SkeletonEnemy : Enemy, IDamageable
         if (Health < 1)
         {
             _anim.SetTrigger("Death");
-            GetComponent<Collider2D>().enabled = false;
+            _isDead = true;
+            GameObject _Loot = Instantiate(_loot, transform.position, Quaternion.identity);
+            _Loot.GetComponent<DiamondScript>()._gems = _gems;
+            
         }
     }
 

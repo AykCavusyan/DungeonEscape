@@ -7,6 +7,8 @@ public class PlayerScript : MonoBehaviour, IDamageable
 {
     public int Health { get; set; }
 
+    public int _diamondAmount;
+
     private Rigidbody2D _rigid;
     [SerializeField] private float jumpforce = 5.0f;
     [SerializeField] private bool grounded;
@@ -146,7 +148,10 @@ public class PlayerScript : MonoBehaviour, IDamageable
     }
      public void Damage()
     {
-        Debug.Log("Damaged");
+        Health--;
+
+        
+        
     }
 
 
