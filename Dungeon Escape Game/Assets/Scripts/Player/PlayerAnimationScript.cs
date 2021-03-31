@@ -33,7 +33,10 @@ public class PlayerAnimationScript : MonoBehaviour
         _swordAnimation.SetTrigger("SwordArcTrigger");
     }
 
-    
+    public void Death()
+    {
+        _anim.SetTrigger("Death");
+    }
 
 }
 

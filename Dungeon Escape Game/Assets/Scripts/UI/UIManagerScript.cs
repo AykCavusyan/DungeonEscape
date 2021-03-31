@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
+    public Image[] lifeImages;
+
     private static UIManagerScript _instance;
     public static UIManagerScript Instance
     {
@@ -21,6 +23,7 @@ public class UIManagerScript : MonoBehaviour
 
     public Text _playerGamCountText;
     public Image _selectionSlider;
+    public Text _gemCount;
 
    
 
@@ -38,5 +41,15 @@ public class UIManagerScript : MonoBehaviour
     public void OpenShop(int gemCount)
     {
         _playerGamCountText.text = "" + gemCount + "G";
+    }
+
+    public void UpdateGemCount(int count)
+    {
+        _gemCount.text = "" + count;
+    }
+
+    public void UpdateLives(int livesRemaining)
+    {
+        lifeImages[livesRemaining].enabled = false;
     }
 }

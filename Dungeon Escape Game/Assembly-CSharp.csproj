@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerAttackScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Shop\ShopScript.cs" />
+    <Compile Include="Assets\Scripts\UI\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIManagerScript.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Users/Sebastian/OneDrive/Desktop/Unity/2019.4.23f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -619,6 +620,10 @@
       <Project>{4F6AB0D1-86FC-7748-7A30-E3F7E464D96E}</Project>
       <Name>Cinemachine</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
+      <Project>{DF40C7F0-AEC4-1D4B-5660-1BE49F86791C}</Project>
+      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
       <Project>{DBD04BC8-5EF9-7D02-4E3B-FA8A4198354F}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
@@ -719,6 +724,10 @@
       <Project>{4620E842-63CF-E55D-21CD-97A69BE6FDC4}</Project>
       <Name>Unity.2D.Tilemap.Extras</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj">
+      <Project>{ED0586DB-8C92-7B22-B144-E012D3E6FAE8}</Project>
+      <Name>Unity.Sysroot.Linux_x86_64</Name>
+    </ProjectReference>
     <ProjectReference Include="com.unity.cinemachine.editor.csproj">
       <Project>{A41FD5A8-47E3-CFFC-49D7-4CF721D61B2D}</Project>
       <Name>com.unity.cinemachine.editor</Name>
@@ -726,6 +735,10 @@
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{FF59E0A2-D93C-3B72-717E-CF335BAE2D26}</Project>
       <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
+      <Project>{D9E89734-3BB7-4925-CEED-CA11FD5273BA}</Project>
+      <Name>Unity.SysrootPackage.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{E07B41A0-A83D-1ECE-FB61-D691CED95518}</Project>
@@ -742,18 +755,6 @@
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{E7976F86-8983-8E84-11E3-6EDA2D8CD5BE}</Project>
       <Name>UnityEditor.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
-      <Project>{DF40C7F0-AEC4-1D4B-5660-1BE49F86791C}</Project>
-      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj">
-      <Project>{ED0586DB-8C92-7B22-B144-E012D3E6FAE8}</Project>
-      <Name>Unity.Sysroot.Linux_x86_64</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
-      <Project>{D9E89734-3BB7-4925-CEED-CA11FD5273BA}</Project>
-      <Name>Unity.SysrootPackage.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

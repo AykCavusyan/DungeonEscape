@@ -30,6 +30,7 @@ public class PlayerScript : MonoBehaviour, IDamageable
         _playeranim = GetComponent<PlayerAnimationScript>();
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _swordArc = transform.GetChild(1).GetComponentInChildren<SpriteRenderer>();
+        Health = 4;
 
         //_swordArc.transform.localEulerAngles = new Vector3(78, 48, -80);
 
@@ -149,10 +150,22 @@ public class PlayerScript : MonoBehaviour, IDamageable
      public void Damage()
     {
         Health--;
+        UIManagerScript.Instance.UpdateLives(Health);
 
-        
-        
+        if (Health < 1)
+        {
+            _playeranim.Death();
+            
+        }
     }
+
+    public void AddGems(int amount)
+    {
+        _diamondAmount += amount;
+        UIManagerScript.Instance.UpdateGemCount(_diamondAmount);
+
+    }
+
 
 
     //void CheckGrounded()

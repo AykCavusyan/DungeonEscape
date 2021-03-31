@@ -6,12 +6,12 @@ public class DiamondScript : MonoBehaviour
 {
 
     
-    public int _gems = 1;
+    public int _gems = 3;
 
     // Start is called before the first frame update
     void Start()
     {
-          
+        
     }
 
     // Update is called once per frame
@@ -29,7 +29,8 @@ public class DiamondScript : MonoBehaviour
             PlayerScript _playerscript = collision.GetComponent<PlayerScript>();
             if(_playerscript != null)
             {
-                _playerscript._diamondAmount += _gems;
+                _playerscript.AddGems(_gems);
+                
                 Destroy(gameObject);
             }
 
